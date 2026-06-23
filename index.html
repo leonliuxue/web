@@ -4,6 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YiWork — AI agents for Singapore accounting firms</title>
+<meta name="description" content="YiWork builds GenAI and agentic workflows for Singapore accounting, tax, audit, and corporate secretarial firms — built around SFRS, IRAS, and ACRA work, with human review on every output.">
+<meta name="author" content="YiWork">
+<meta name="theme-color" content="#0C2E25">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://yiwork.ai/">
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YiWork">
+<meta property="og:title" content="YiWork — AI agents for Singapore accounting firms">
+<meta property="og:description" content="GenAI and agentic workflows for accounting, tax, audit, and corporate secretarial teams. The repetitive compliance load runs on agents; your people keep the judgement and the sign-off.">
+<meta property="og:url" content="https://yiwork.ai/">
+<meta property="og:locale" content="en_SG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="YiWork — AI agents for Singapore accounting firms">
+<meta name="twitter:description" content="GenAI and agentic workflows for accounting, tax, audit, and corporate secretarial teams — sized for SFRS, IRAS, and ACRA work.">
+<!-- Favicon: brand check mark in a forest rounded square -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230C2E25'/><path d='M5 12.5 10 17 19 7' fill='none' stroke='%237FE0B0' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230C2E25'/><path d='M5 12.5 10 17 19 7' fill='none' stroke='%237FE0B0' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;450;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
@@ -26,10 +44,16 @@
     --maxw:1140px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
   body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* keyboard focus + skip link */
+  :focus-visible{outline:2px solid var(--emerald);outline-offset:3px;border-radius:6px}
+  .on-dark :focus-visible,.problem :focus-visible,.ledger :focus-visible,.case-panel :focus-visible,.cta :focus-visible,.team-id :focus-visible{outline-color:#7FE0B0}
+  .skip{position:absolute;left:14px;top:-60px;z-index:100;background:var(--forest);color:#EAF3EE;font-family:var(--mono);font-size:13px;padding:10px 16px;border-radius:9px;transition:top .2s}
+  .skip:focus{top:14px}
 
   .eyebrow{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--emerald);display:inline-flex;align-items:center;gap:9px;}
   .eyebrow::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--emerald);transform:rotate(45deg);}
@@ -52,16 +76,19 @@
   .btn-ghost:hover{border-color:var(--forest)}
   .nav-cta{display:flex;align-items:center;gap:14px}
   .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;width:42px;height:38px;cursor:pointer;align-items:center;justify-content:center}
-  .menu-btn span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
-  .menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
+  .menu-btn span{display:block;width:18px;height:2px;background:var(--ink);position:relative;transition:background .2s}
+  .menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);transition:transform .2s}
   .menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+  .mobile-open .menu-btn span{background:transparent}
+  .mobile-open .menu-btn span::before{transform:translateY(6px) rotate(45deg)}
+  .mobile-open .menu-btn span::after{transform:translateY(-6px) rotate(-45deg)}
 
   /* hero */
   .hero{padding:70px 0 60px;position:relative}
   .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center}
-  h1{font-family:var(--display);font-weight:600;font-size:clamp(37px,4.9vw,60px);line-height:1.02;letter-spacing:-0.025em;margin:20px 0 22px;}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(37px,4.9vw,60px);line-height:1.02;letter-spacing:-0.025em;margin:20px 0 22px;text-wrap:balance}
   h1 .hl{color:var(--emerald);font-style:normal}
-  .hero p.lead{font-size:18px;color:#3a403c;max-width:34em;margin-bottom:30px}
+  .hero p.lead{font-size:18px;color:#3a403c;max-width:34em;margin-bottom:30px;text-wrap:pretty}
   .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
   .hero-actions .note{font-family:var(--mono);font-size:12px;color:var(--stone);margin-left:4px}
 
@@ -93,8 +120,8 @@
 
   section{padding:78px 0}
   .sec-head{max-width:700px;margin-bottom:46px}
-  h2{font-family:var(--display);font-weight:600;font-size:clamp(26px,3.4vw,38px);line-height:1.08;letter-spacing:-0.02em;margin:16px 0 14px}
-  .sec-head p{font-size:17px;color:#414743}
+  h2{font-family:var(--display);font-weight:600;font-size:clamp(26px,3.4vw,38px);line-height:1.08;letter-spacing:-0.02em;margin:16px 0 14px;text-wrap:balance}
+  .sec-head p{font-size:17px;color:#414743;text-wrap:pretty}
 
   /* problem */
   .problem{background:var(--forest);color:#E6F0EA}
@@ -307,14 +334,16 @@
 </head>
 <body>
 
+<a class="skip" href="#main-content">Skip to content</a>
+
 <!-- NAV -->
 <header class="nav" id="top">
   <div class="wrap nav-inner">
-    <a href="#top" class="brand">
-      <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#7FE0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 10 18 20 6"/></svg></span>
+    <a href="#top" class="brand" aria-label="YiWork — home">
+      <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#7FE0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"/></svg></span>
       YiWork
     </a>
-    <nav class="nav-links">
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
       <a href="#services">Services</a>
       <a href="#ai-delivery">AI delivery</a>
       <a href="#how">How it works</a>
@@ -324,10 +353,12 @@
     <div class="nav-cta">
       <a href="#cta" class="btn btn-ghost">Talk to us</a>
       <a href="#cta" class="btn btn-primary">Book a workflow review</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span></button>
     </div>
   </div>
 </header>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero">
@@ -695,22 +726,22 @@
     </div>
     <div class="tgrid">
       <div class="tcard reveal">
-        <div class="ticon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7z"/></svg></div>
+        <div class="ticon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7z"/></svg></div>
         <h3>Human in the loop</h3>
         <p>Agents draft; people decide. Every output passes a review checkpoint before it reaches a client, IRAS, or ACRA.</p>
       </div>
       <div class="tcard reveal">
-        <div class="ticon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="ticon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
         <h3>Your data stays yours</h3>
         <p>Client records are processed in isolated environments. No training on your data, defined retention rules, access you control.</p>
       </div>
       <div class="tcard reveal">
-        <div class="ticon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v4H4z"/><path d="M4 12h10"/><path d="M4 16h10"/><path d="M4 20h7"/><path d="M17 13l2 2 3-3"/></svg></div>
+        <div class="ticon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v4H4z"/><path d="M4 12h10"/><path d="M4 16h10"/><path d="M4 20h7"/><path d="M17 13l2 2 3-3"/></svg></div>
         <h3>Full audit trail</h3>
         <p>Every agent action is logged with its source documents, so you can show exactly how a number or draft was produced.</p>
       </div>
       <div class="tcard reveal">
-        <div class="ticon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v7a6 6 0 0 1-12 0z"/><path d="M8 21h8"/><path d="M12 16v5"/><path d="M4 6H2v2a4 4 0 0 0 4 4"/><path d="M20 6h2v2a4 4 0 0 1-4 4"/></svg></div>
+        <div class="ticon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v7a6 6 0 0 1-12 0z"/><path d="M8 21h8"/><path d="M12 16v5"/><path d="M4 6H2v2a4 4 0 0 0 4 4"/><path d="M20 6h2v2a4 4 0 0 1-4 4"/></svg></div>
         <h3>Professional oversight</h3>
         <p>Delivery is led by accountancy-qualified leadership, with credentials shown in the team section and review checkpoints built into each workflow.</p>
       </div>
@@ -738,12 +769,14 @@
   </div>
 </div>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="foot-inner">
       <div class="foot-brand">
-        <a href="#top" class="brand"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#7FE0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 10 18 20 6"/></svg></span>YiWork</a>
+        <a href="#top" class="brand" aria-label="YiWork — home"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#7FE0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"/></svg></span>YiWork</a>
         <p>GenAI and agentic workflows for Singapore accounting, tax, audit, and corporate secretarial practices. Less re-keying, more judgement.</p>
       </div>
       <div class="foot-cols">
@@ -765,8 +798,15 @@
 </footer>
 
 <script>
-  document.getElementById('menuBtn').addEventListener('click',function(){document.body.classList.toggle('mobile-open');});
-  document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('mobile-open');});});
+  var menuBtn=document.getElementById('menuBtn');
+  function setMenu(open){
+    document.body.classList.toggle('mobile-open',open);
+    menuBtn.setAttribute('aria-expanded',open?'true':'false');
+    menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
+  }
+  menuBtn.addEventListener('click',function(){setMenu(!document.body.classList.contains('mobile-open'));});
+  document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('mobile-open')){setMenu(false);menuBtn.focus();}});
 
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
