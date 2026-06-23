@@ -202,6 +202,24 @@
   .step .arrow{position:absolute;right:-9px;top:30px;width:18px;height:18px;background:var(--card);border-top:1px solid var(--line);border-right:1px solid var(--line);transform:rotate(45deg);z-index:2}
   .step:last-child .arrow{display:none}
 
+  /* team */
+  .team{background:var(--card);border-top:1px solid var(--line)}
+  .team-profile{display:grid;grid-template-columns:0.72fr 1.28fr;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper)}
+  .team-id{padding:30px;background:var(--forest);color:#EAF3EE;display:flex;flex-direction:column;justify-content:space-between;min-height:310px}
+  .avatar{width:76px;height:76px;border-radius:18px;background:#7FE0B0;color:#0C2E25;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:30px;font-weight:700;letter-spacing:-0.02em;margin-bottom:22px}
+  .team-id h3{font-family:var(--display);font-weight:600;font-size:30px;line-height:1.05;letter-spacing:-0.02em;margin-bottom:8px}
+  .role{font-family:var(--mono);font-size:12px;color:#9FD7BD;letter-spacing:0.1em;text-transform:uppercase}
+  .team-note{font-family:var(--mono);font-size:11.5px;color:#8AA89B;margin-top:24px;line-height:1.45}
+  .team-details{padding:30px}
+  .team-details h4{font-family:var(--display);font-size:21px;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px}
+  .team-details p{font-size:15.5px;color:#3f4541;line-height:1.56;max-width:45em}
+  .credentials{display:grid;gap:10px;margin-top:22px}
+  .credential{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}
+  .credential:last-child{border-bottom:1px solid var(--line)}
+  .credential .badge{width:38px;height:38px;border-radius:9px;background:rgba(28,122,86,0.1);color:var(--emerald);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:700}
+  .credential strong{display:block;font-family:var(--display);font-size:16px;font-weight:600;line-height:1.25;margin-bottom:4px}
+  .credential span{display:block;font-size:13.5px;color:var(--stone)}
+
   /* trust */
   .trust{background:var(--card);border-top:1px solid var(--line)}
   .trust .tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -256,6 +274,8 @@
     .chain-step:last-child{border-bottom:none}
     .chain-step::after{display:none}
     .research-grid{grid-template-columns:1fr 1fr}
+    .team-profile{grid-template-columns:1fr}
+    .team-id{min-height:auto}
     .steps{grid-template-columns:1fr 1fr}
     .step{border-bottom:1px solid var(--line)}
     .step .arrow{display:none}
@@ -275,6 +295,8 @@
     .agent-chain{padding:20px}
     .agent-chain .chain-title{align-items:flex-start;flex-direction:column;gap:6px}
     .research-grid{grid-template-columns:1fr}
+    .team-id,.team-details{padding:24px 20px}
+    .credential{grid-template-columns:1fr}
     .cta{padding:38px 26px}
     .svc .svc-desc{padding-left:48px}
     section{padding:58px 0}
@@ -296,6 +318,7 @@
       <a href="#services">Services</a>
       <a href="#ai-delivery">AI delivery</a>
       <a href="#how">How it works</a>
+      <a href="#team">Team</a>
       <a href="#trust">Security</a>
     </nav>
     <div class="nav-cta">
@@ -620,6 +643,48 @@
   </div>
 </section>
 
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Team</span>
+      <h2>Led by accountancy-qualified delivery leadership.</h2>
+      <p>YiWork keeps AI delivery close to professional accountancy judgement: agents draft, systems structure the work, and qualified leadership owns the review discipline.</p>
+    </div>
+
+    <div class="team-profile reveal">
+      <div class="team-id">
+        <div>
+          <div class="avatar" aria-hidden="true">J</div>
+          <h3>Jennie</h3>
+          <div class="role">CEO</div>
+        </div>
+        <div class="team-note">// accountancy background · AI-enabled workflow delivery</div>
+      </div>
+      <div class="team-details">
+        <h4>Professional accountancy credentials</h4>
+        <p>Jennie leads YiWork's service delivery model, combining professional accountancy judgement with GenAI and agent-based workflows for accounting, tax, audit support, and corporate secretarial work.</p>
+        <div class="credentials">
+          <div class="credential">
+            <div class="badge">ISCA</div>
+            <div>
+              <strong>Institute of Singapore Chartered Accountants</strong>
+              <span>Chartered Accountant</span>
+            </div>
+          </div>
+          <div class="credential">
+            <div class="badge">ACCA</div>
+            <div>
+              <strong>Association of Chartered Certified Accountants</strong>
+              <span>ACCA Member</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TRUST -->
 <section class="trust" id="trust">
   <div class="wrap">
@@ -646,8 +711,8 @@
       </div>
       <div class="tcard reveal">
         <div class="ticon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v7a6 6 0 0 1-12 0z"/><path d="M8 21h8"/><path d="M12 16v5"/><path d="M4 6H2v2a4 4 0 0 0 4 4"/><path d="M20 6h2v2a4 4 0 0 1-4 4"/></svg></div>
-        <h3>Professional credentials</h3>
-        <p>Institute of Singapore Chartered Accountants - Chartered Accountant. Association of Chartered Certified Accountants - ACCA Member.</p>
+        <h3>Professional oversight</h3>
+        <p>Delivery is led by accountancy-qualified leadership, with credentials shown in the team section and review checkpoints built into each workflow.</p>
       </div>
     </div>
   </div>
@@ -688,7 +753,7 @@
         </div>
         <div class="foot-col">
           <h4>Company</h4>
-          <a href="#ai-delivery">AI delivery</a><a href="#case">Case study</a><a href="#how">How it works</a><a href="#trust">Security</a><a href="#cta">Contact</a>
+          <a href="#ai-delivery">AI delivery</a><a href="#case">Case study</a><a href="#how">How it works</a><a href="#team">Team</a><a href="#trust">Security</a><a href="#cta">Contact</a>
         </div>
       </div>
     </div>
