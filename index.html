@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YiWork — AI agents for Singapore accounting firms</title>
-<meta name="description" content="YiWork builds GenAI and agentic workflows for Singapore accounting, tax, audit, and corporate secretarial firms — built around SFRS, IRAS, and ACRA work, with human review on every output.">
+<title>YiWork — AI workflow automation for Singapore accounting firms</title>
+<meta name="description" content="YiWork turns repetitive Singapore accounting, tax, audit, and corporate secretarial work into reviewed AI-agent drafts, with source traceability and human sign-off built in.">
 <meta name="author" content="YiWork">
 <meta name="theme-color" content="#0C2E25">
 <meta name="color-scheme" content="light">
@@ -12,13 +12,13 @@
 <!-- Open Graph / social -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YiWork">
-<meta property="og:title" content="YiWork — AI agents for Singapore accounting firms">
-<meta property="og:description" content="GenAI and agentic workflows for accounting, tax, audit, and corporate secretarial teams. The repetitive compliance load runs on agents; your people keep the judgement and the sign-off.">
+<meta property="og:title" content="YiWork — AI workflow automation for Singapore accounting firms">
+<meta property="og:description" content="Turn bank recs, FS drafts, tax computations, GST, ACRA packs, and working papers into traceable AI-agent drafts reviewed by your team.">
 <meta property="og:url" content="https://yiwork.ai/">
 <meta property="og:locale" content="en_SG">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="YiWork — AI agents for Singapore accounting firms">
-<meta name="twitter:description" content="GenAI and agentic workflows for accounting, tax, audit, and corporate secretarial teams — sized for SFRS, IRAS, and ACRA work.">
+<meta name="twitter:title" content="YiWork — AI workflow automation for Singapore accounting firms">
+<meta name="twitter:description" content="AI-agent workflows for Singapore accounting firms: reviewed drafts, source traceability, and human sign-off for compliance-heavy work.">
 <!-- Favicon: brand check mark in a forest rounded square -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230C2E25'/><path d='M5 12.5 10 17 19 7' fill='none' stroke='%237FE0B0' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230C2E25'/><path d='M5 12.5 10 17 19 7' fill='none' stroke='%237FE0B0' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>">
@@ -213,6 +213,8 @@
 
   /* quote */
   .case-quote{margin-top:42px;border:1px solid var(--line);border-left:3px solid var(--emerald);border-radius:0 14px 14px 0;background:var(--paper);padding:26px 30px;max-width:760px}
+  .case-quote h3{font-family:var(--display);font-weight:600;font-size:19px;line-height:1.2;letter-spacing:-0.01em;margin-bottom:9px;color:var(--ink)}
+  .case-quote p{font-size:15.5px;color:#3f4541;line-height:1.58;max-width:42em}
   .case-quote blockquote{font-family:var(--display);font-weight:500;font-size:20px;line-height:1.4;letter-spacing:-0.01em;color:var(--ink)}
   .case-quote .qattr{font-family:var(--mono);font-size:12px;color:var(--stone);margin-top:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .case-quote .qattr .ill{color:var(--emerald);border:1px solid rgba(28,122,86,0.3);border-radius:5px;padding:2px 7px}
@@ -351,8 +353,8 @@
       <a href="#trust">Security</a>
     </nav>
     <div class="nav-cta">
-      <a href="#cta" class="btn btn-ghost">Talk to us</a>
-      <a href="#cta" class="btn btn-primary">Book a free review</a>
+      <a href="#cta" class="btn btn-ghost">Email us</a>
+      <a href="#cta" class="btn btn-primary">Get a workflow review</a>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span></button>
     </div>
   </div>
@@ -364,13 +366,13 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="reveal">
-      <span class="eyebrow">AI agents for Singapore accounting firms</span>
-      <h1>Give your firm back <span class="hl">its hours.</span></h1>
-      <p class="lead">The repetitive load — bank recs, FS drafts from trial balance, tax computations, ACRA filings — runs on AI agents built for SFRS, IRAS, and ACRA. Your people keep the judgement, the review, and the sign-off. No rip-and-replace; it runs on your existing files.</p>
+      <span class="eyebrow">AI workflow automation for Singapore accounting firms</span>
+      <h1>Turn repetitive compliance work into <span class="hl">review-ready drafts.</span></h1>
+      <p class="lead">YiWork builds controlled AI-agent workflows for bank reconciliations, FS drafts, tax computations, GST F5, ACRA filing packs, and audit workpapers. Your team keeps the judgement and sign-off; the agent handles the first pass, source links, and exception list using your existing files.</p>
       <div class="hero-actions">
         <a href="#cta" class="btn btn-primary">Book a free workflow review</a>
         <a href="#case" class="btn btn-ghost">Read the case study</a>
-        <span class="note">// free · ~45 min · no obligation, no lock-in</span>
+        <span class="note">// free · ~45 min · written opportunity map</span>
       </div>
     </div>
 
@@ -383,8 +385,8 @@
       <div class="lrow muted"><span class="llabel">Vouching &amp; doc matching</span><span class="lval">18.0 h</span><span class="ldelta">→ 3.0 h</span></div>
       <div class="lrow muted"><span class="llabel">Draft FS from trial balance</span><span class="lval">9.0 h</span><span class="ldelta">→ 1.0 h</span></div>
       <div class="lrow muted"><span class="llabel">Secretarial resolutions</span><span class="lval">6.0 h</span><span class="ldelta">→ 0.5 h</span></div>
-      <div class="ledger-total"><span class="tlabel">Hours returned / month</span><span class="tval" id="savedNum">39.0 h</span></div>
-      <div class="ledger-foot"><span class="dot"></span> per client engagement · partner reviews, agent drafts</div>
+      <div class="ledger-total"><span class="tlabel">Estimated hours returned</span><span class="tval" id="savedNum">39.0 h</span></div>
+      <div class="ledger-foot"><span class="dot"></span> sample client file · partner reviews, agent drafts</div>
     </div>
   </div>
 </section>
@@ -392,7 +394,7 @@
 <!-- STRIP -->
 <div class="strip">
   <div class="wrap strip-inner">
-    <span class="label">Built around the filings and standards you already work to</span>
+    <span class="label">Built around the filings, standards, and review discipline you already use</span>
     <div class="items">
       <span>SFRS</span><span>IRAS Form C-S</span><span>GST F5</span><span>ACRA XBRL</span><span>SSA audit</span>
     </div>
@@ -405,14 +407,14 @@
     <div class="pcols">
       <div class="pbody reveal">
         <span class="eyebrow">Why now</span>
-        <h2>Your margin is made of hours you can't bill at their best.</h2>
-        <p>A practice's economics run on time. But a large share of that time goes to <strong>re-keying bank statements, chasing reconciliations, matching invoices to entries, and assembling working papers</strong> — necessary work that doesn't reflect what your seniors are qualified to do.</p>
-        <p>These tasks are structured, repetitive, and rule-bound, which makes them the <strong>clearest fit for AI agents</strong>: software that reads the source documents, drafts the output, and routes it to a reviewer — instead of a senior building it from a blank file.</p>
-        <p>The goal is not fewer accountants. It is <strong>more engagements per accountant</strong>, with people spending their hours on review, advisory, and client relationships.</p>
+        <h2>Your bottleneck is not expertise. It is repetitive file handling.</h2>
+        <p>A practice's economics run on time. Too much of that time goes to <strong>re-keying bank statements, chasing reconciliations, matching invoices to entries, and assembling working papers</strong> — necessary work that does not need a senior to start from a blank file.</p>
+        <p>These tasks are structured, repetitive, and rule-bound, which makes them the <strong>clearest fit for AI agents</strong>: software that reads the source documents, drafts the output, records the source trail, and routes exceptions to a reviewer.</p>
+        <p>The commercial goal is practical: <strong>more capacity per accountant</strong>, with people spending their hours on review, advisory, and client relationships.</p>
       </div>
       <div class="pstats reveal">
-        <div class="pstat"><div class="num">~50%</div><div class="desc">of professional-services task time goes to data gathering and processing that is highly automatable.</div><div class="src">// indicative industry estimate</div></div>
-        <div class="pstat"><div class="num">3–8×</div><div class="desc">faster turnaround on document-heavy steps once an agent produces the first draft.</div><div class="src">// observed across early engagements</div></div>
+        <div class="pstat"><div class="num">High</div><div class="desc">volume of professional-services time sits in data gathering, formatting, matching, and processing.</div><div class="src">// strongest automation fit</div></div>
+        <div class="pstat"><div class="num">3–8×</div><div class="desc">faster turnaround is a realistic pilot target for document-heavy first-draft steps.</div><div class="src">// measured before scale-up</div></div>
         <div class="pstat"><div class="num">100%</div><div class="desc">human-reviewed — every agent output is checked and signed off by your staff before it leaves the firm.</div><div class="src">// non-negotiable by design</div></div>
       </div>
     </div>
@@ -424,8 +426,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Where agents fit your practice</span>
-      <h2>One AI use-case for every line of your service menu.</h2>
-      <p>We map agents to the work you already do under Singapore standards — not a generic chatbot bolted on. Each line pairs a service you offer with the specific tasks an agent can take off your team's desk.</p>
+      <h2>Five ways to move routine compliance work into reviewed agent drafts.</h2>
+      <p>We map agents to the work you already deliver under Singapore standards. Each workflow has defined inputs, rules, exceptions, source traceability, and a human review point before the output leaves your firm.</p>
     </div>
 
     <div class="svc-list reveal">
@@ -433,7 +435,7 @@
         <div class="idx">01</div>
         <div><div class="svc-name">Accounting Services</div><div class="svc-from">bookkeeping &amp; ledgers</div></div>
         <div class="svc-desc">
-          Agents read bank statements, sales and purchase invoices, post and code entries to your chart of accounts, and run reconciliations — surfacing only the exceptions a human needs to clear.
+          Agents read bank statements, sales and purchase invoices, propose coding to your chart of accounts, and run reconciliations, so your team starts from matched entries and a clear exception list.
           <div class="tasks"><span class="chip">bank reconciliation</span><span class="chip">invoice → journal entry</span><span class="chip">GL coding</span><span class="chip">AR / AP matching</span></div>
         </div>
       </div>
@@ -442,7 +444,7 @@
         <div class="idx">02</div>
         <div><div class="svc-name">Compilation of Financial Statements</div><div class="svc-from">trial balance → SFRS FS</div></div>
         <div class="svc-desc">
-          From a trial balance, an agent drafts a full statement set with notes under SFRS or SFRS for Small Entities, in your house template, and prepares the XBRL tagging for BizFinx — ready for review and sign-off.
+          From a trial balance, an agent drafts a statement set with notes under SFRS or SFRS for Small Entities, follows your house template, and prepares XBRL tagging for BizFinx review.
           <div class="tasks"><span class="chip">FS draft from TB</span><span class="chip">notes &amp; disclosures</span><span class="chip">XBRL / BizFinx tagging</span><span class="chip">prior-year tie-out</span></div>
         </div>
       </div>
@@ -451,7 +453,7 @@
         <div class="idx">03</div>
         <div><div class="svc-name">Taxation Services</div><div class="svc-from">IRAS computation &amp; filing</div></div>
         <div class="svc-desc">
-          Agents prepare tax computations, draft Form C-S / C and ECI, compile GST F5 returns, and surface eligible deductions and capital allowances from source records — each with a traceable working.
+          Agents prepare tax computations, draft Form C-S / C and ECI, compile GST F5 returns, and surface deductions or capital allowances from source records with traceable workings.
           <div class="tasks"><span class="chip">tax computation</span><span class="chip">Form C-S / ECI draft</span><span class="chip">GST F5</span><span class="chip">deadline tracking</span></div>
         </div>
       </div>
@@ -460,7 +462,7 @@
         <div class="idx">04</div>
         <div><div class="svc-name">External &amp; Special Audit</div><div class="svc-from">SSA evidence &amp; working papers</div></div>
         <div class="svc-desc">
-          Agents select samples, detect anomalies across ledgers, draft working papers aligned to your SSA programme, and prepare confirmation requests — leaving your auditors to test, judge, and conclude.
+          Agents support sample selection, anomaly checks, working-paper drafts aligned to your SSA programme, and confirmation preparation, leaving auditors to test, judge, and conclude.
           <div class="tasks"><span class="chip">risk-based sampling</span><span class="chip">anomaly detection</span><span class="chip">working-paper drafts</span><span class="chip">confirmations</span></div>
         </div>
       </div>
@@ -469,7 +471,7 @@
         <div class="idx">05</div>
         <div><div class="svc-name">Corporate Secretarial Services</div><div class="svc-from">ACRA compliance &amp; filings</div></div>
         <div class="svc-desc">
-          Agents draft directors' resolutions and minutes, maintain an ACRA compliance calendar for Annual Returns and AGMs, prepare BizFile+ filing packs, and run KYC intake against your checklists.
+          Agents draft directors' resolutions and minutes, maintain ACRA compliance calendars for Annual Returns and AGMs, prepare BizFile+ filing packs, and run KYC intake against your checklists.
           <div class="tasks"><span class="chip">resolutions &amp; minutes</span><span class="chip">Annual Return calendar</span><span class="chip">BizFile+ prep</span><span class="chip">KYC intake</span></div>
         </div>
       </div>
@@ -481,9 +483,9 @@
 <section class="ai-delivery" id="ai-delivery">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">GenAI delivery experience</span>
-      <h2>Experience turning accounting workflows into reviewed agent outputs.</h2>
-      <p>YiWork applies GenAI and agent technology as a controlled delivery method: map the workflow, connect the source files, build agents around defined tasks, test the outputs, and keep professional judgement with the reviewer.</p>
+      <span class="eyebrow">Controlled GenAI delivery</span>
+      <h2>Not a chatbot. A reviewed workflow your team can operate.</h2>
+      <p>YiWork applies GenAI and agent technology as a controlled delivery method: map the workflow, connect source files, build agents around defined tasks, test outputs, and keep professional judgement with the reviewer.</p>
     </div>
 
     <div class="delivery-grid reveal">
@@ -569,21 +571,21 @@
   <div class="wrap">
     <div class="sec-head reveal" style="margin-bottom:14px">
       <span class="eyebrow">Representative case study</span>
-      <h2>How a 25-person practice reclaimed its month-end close.</h2>
+      <h2>What the capacity model can look like for a 25-person practice.</h2>
       <div class="case-meta">
         <span>Mid-sized SG accounting firm</span>
         <span>~25 staff</span>
         <span>~180 SME clients</span>
         <span>Dec financial year-ends</span>
       </div>
-      <p style="font-size:14px;color:var(--stone);margin-top:6px">A representative engagement built from common patterns across SME practices. Figures are illustrative, not a specific client's audited results.</p>
+      <p style="font-size:14px;color:var(--stone);margin-top:6px">A representative model built from common patterns across SME practices. Figures are illustrative, not a specific client's audited results, and are validated during a pilot before scale-up.</p>
     </div>
 
     <div class="case-cols reveal">
       <div class="case-body">
         <div class="case-block">
           <div class="ctitle"><span class="cn">A.</span> The challenge</div>
-          <p>With most clients on December year-ends, the firm faced a hard annual crunch. Seniors spent roughly <strong>12 hours per client</strong> on bank reconciliation and trial-balance clean-up, then another <strong>~9 hours</strong> drafting the SFRS statement set. Peak season meant sustained overtime, slipping turnaround, and rising attrition risk among trained staff.</p>
+          <p>With many clients on December year-ends, a typical firm faces a hard annual crunch. Seniors can spend roughly <strong>12 hours per client</strong> on bank reconciliation and trial-balance clean-up, then another <strong>~9 hours</strong> drafting the SFRS statement set. Peak season means overtime, slipping turnaround, and attrition risk among trained staff.</p>
         </div>
         <div class="case-block">
           <div class="ctitle"><span class="cn">B.</span> What we built</div>
@@ -631,8 +633,9 @@
     </div>
 
     <div class="case-quote reveal">
-      <blockquote>"Our seniors stopped re-keying statements and started reviewing them. We took on more year-ends in the same season without adding headcount."</blockquote>
-      <div class="qattr">Managing Partner, mid-sized SG practice <span class="ill">illustrative quote</span></div>
+      <h3>Operational shift</h3>
+      <p>The intended change is simple: seniors stop building every schedule from a blank file and start reviewing structured drafts, source links, and exceptions. Capacity improves only when the pilot shows measurable time saved without weakening review quality.</p>
+      <div class="qattr">Representative operating outcome <span class="ill">validated during pilot</span></div>
     </div>
   </div>
 </section>
@@ -680,7 +683,7 @@
     <div class="sec-head reveal">
       <span class="eyebrow">Team</span>
       <h2>Led by accountancy-qualified delivery leadership.</h2>
-      <p>YiWork keeps AI delivery close to professional accountancy judgement: agents draft, systems structure the work, and qualified leadership owns the review discipline.</p>
+      <p>YiWork keeps AI delivery close to professional accountancy judgement: agents draft, systems structure the work, and qualified leadership owns the review discipline from workflow design through rollout.</p>
     </div>
 
     <div class="team-profile reveal">
@@ -694,7 +697,7 @@
       </div>
       <div class="team-details">
         <h4>Professional accountancy credentials</h4>
-        <p>Jennie leads YiWork's service delivery model, combining professional accountancy judgement with GenAI and agent-based workflows for accounting, tax, audit support, and corporate secretarial work.</p>
+        <p>Jennie leads YiWork's service delivery model, combining professional accountancy judgement with GenAI and agent-based workflows for accounting, tax, audit support, and corporate secretarial work in Singapore.</p>
         <div class="credentials">
           <div class="credential">
             <div class="badge">ISCA</div>
@@ -756,13 +759,13 @@
       <div class="cta-inner">
         <div>
           <span class="eyebrow on-dark">Start with one workflow</span>
-          <h2>See the hours before you commit.</h2>
-          <p>Book a free workflow review. We'll map one process in your practice — a close, a tax computation, an Annual Return cycle — and show you, in writing, the hours an agent could return. No obligation to proceed.</p>
+          <h2>Leave with a clear automation opportunity map.</h2>
+          <p>Book a free workflow review. We will map one process in your practice, estimate the hours at stake, identify the first safe pilot, and outline the controls required before rollout. No obligation to proceed.</p>
         </div>
         <div class="cta-actions">
           <a href="mailto:hello@yiwork.ai?subject=Free%20workflow%20review%20request" class="btn btn-light">Book a free workflow review</a>
           <a href="mailto:hello@yiwork.ai" class="btn btn-outline">hello@yiwork.ai</a>
-          <span class="cta-meta">// reply within 1 business day · no obligation</span>
+          <span class="cta-meta">// workflow map · pilot scope · control checklist</span>
         </div>
       </div>
     </div>
@@ -777,7 +780,7 @@
     <div class="foot-inner">
       <div class="foot-brand">
         <a href="#top" class="brand" aria-label="YiWork — home"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#7FE0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"/></svg></span>YiWork</a>
-        <p>GenAI and agentic workflows for Singapore accounting, tax, audit, and corporate secretarial practices. Less re-keying, more judgement.</p>
+        <p>Reviewed AI-agent workflows for Singapore accounting, tax, audit, and corporate secretarial practices. Less re-keying, more judgement.</p>
       </div>
       <div class="foot-cols">
         <div class="foot-col">
@@ -792,7 +795,7 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 YiWork</span>
-      <span>// case figures are illustrative, not a specific client's results</span>
+      <span>// capacity figures are illustrative and validated during pilot</span>
     </div>
   </div>
 </footer>
