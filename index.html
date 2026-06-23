@@ -16,9 +16,12 @@
 <meta property="og:description" content="Turn bank recs, FS drafts, tax computations, GST, ACRA packs, and working papers into traceable AI-agent drafts reviewed by your team.">
 <meta property="og:url" content="https://yiwork.ai/">
 <meta property="og:locale" content="en_SG">
+<meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="YiWork — AI workflow automation for Singapore accounting firms">
 <meta name="twitter:description" content="AI-agent workflows for Singapore accounting firms: reviewed drafts, source traceability, and human sign-off for compliance-heavy work.">
+<link rel="alternate" hreflang="en-SG" href="https://yiwork.ai/?lang=en">
+<link rel="alternate" hreflang="zh-CN" href="https://yiwork.ai/?lang=zh">
 <!-- Favicon: brand check mark in a forest rounded square -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230C2E25'/><path d='M5 12.5 10 17 19 7' fill='none' stroke='%237FE0B0' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230C2E25'/><path d='M5 12.5 10 17 19 7' fill='none' stroke='%237FE0B0' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>">
@@ -38,13 +41,26 @@
     --line:#E2E0D7;
     --line-dk:rgba(255,255,255,0.12);
     --red:#B0492F;
-    --display:"Space Grotesk",sans-serif;
-    --body:"Inter",sans-serif;
+    --cjk:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    --display:"Space Grotesk",var(--cjk);
+    --body:"Inter",var(--cjk);
     --mono:"JetBrains Mono",monospace;
     --maxw:1140px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;scroll-padding-top:84px}
+  html[lang="zh-CN"]{--display:"Inter",var(--cjk);--body:"Inter",var(--cjk)}
+  html[lang="zh-CN"] h1,
+  html[lang="zh-CN"] h2,
+  html[lang="zh-CN"] h3,
+  html[lang="zh-CN"] h4{letter-spacing:0;text-wrap:pretty}
+  html[lang="zh-CN"] .eyebrow,
+  html[lang="zh-CN"] .strip .label,
+  html[lang="zh-CN"] .role,
+  html[lang="zh-CN"] .foot-col h4,
+  html[lang="zh-CN"] .case-block .ctitle,
+  html[lang="zh-CN"] .ledger-title,
+  html[lang="zh-CN"] .tlabel{letter-spacing:0.04em}
   body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
@@ -75,6 +91,9 @@
   .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
   .btn-ghost:hover{border-color:var(--forest)}
   .nav-cta{display:flex;align-items:center;gap:14px}
+  .lang-switch{height:40px;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:9px;background:rgba(252,251,247,0.72);padding:0 11px}
+  .lang-switch label{font-family:var(--mono);font-size:11px;color:var(--stone);letter-spacing:0.04em;text-transform:uppercase}
+  .lang-switch select{font-family:var(--body);font-size:14px;font-weight:550;color:var(--ink);border:none;background:transparent;cursor:pointer;outline:none}
   .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;width:42px;height:38px;cursor:pointer;align-items:center;justify-content:center}
   .menu-btn span{display:block;width:18px;height:2px;background:var(--ink);position:relative;transition:background .2s}
   .menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);transition:transform .2s}
@@ -317,6 +336,8 @@
     .wrap{padding:0 20px}
     .nav-links{display:none}
     .nav-cta .btn-ghost{display:none}
+    .lang-switch{height:38px;padding:0 9px}
+    .lang-switch label{display:none}
     .menu-btn{display:flex}
     .strip-inner{flex-direction:column;align-items:flex-start;gap:14px}
     .steps{grid-template-columns:1fr}
@@ -331,6 +352,10 @@
     section{padding:58px 0}
     .case-quote blockquote{font-size:17.5px}
     .mobile-open .nav-links{display:flex;position:absolute;top:66px;left:0;right:0;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line);padding:18px 20px;gap:16px}
+  }
+  @media (max-width:430px){
+    .nav-cta{gap:10px}
+    .nav-cta .btn-primary{display:none}
   }
 </style>
 </head>
@@ -353,6 +378,13 @@
       <a href="#trust">Security</a>
     </nav>
     <div class="nav-cta">
+      <div class="lang-switch">
+        <label for="languageSelect">Language</label>
+        <select id="languageSelect" aria-label="Select language">
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
       <a href="#cta" class="btn btn-ghost">Email us</a>
       <a href="#cta" class="btn btn-primary">Get a workflow review</a>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span></button>
@@ -801,11 +833,394 @@
 </footer>
 
 <script>
+  var currentLang='en';
+  var i18nText={
+    zh:{
+      "Skip to content":"跳至正文",
+      "Language":"语言",
+      "Services":"服务",
+      "AI delivery":"AI 交付",
+      "How it works":"实施方式",
+      "Team":"团队",
+      "Security":"安全",
+      "Email us":"联系我们",
+      "Get a workflow review":"获取流程评估",
+      "AI workflow automation for Singapore accounting firms":"面向新加坡会计事务所的 AI 工作流自动化",
+      "Turn repetitive compliance work into":"将重复性合规工作转化为",
+      "review-ready drafts.":"可供复核的初稿。",
+      "YiWork builds controlled AI-agent workflows for bank reconciliations, FS drafts, tax computations, GST F5, ACRA filing packs, and audit workpapers. Your team keeps the judgement and sign-off; the agent handles the first pass, source links, and exception list using your existing files.":"YiWork 为银行对账、财务报表初稿、税务计算、GST F5、ACRA 申报文件包和审计工作底稿构建受控的 AI Agent 工作流。专业判断和签署仍由你的团队负责；Agent 基于现有文件完成第一轮处理、来源链接和异常清单。",
+      "Book a free workflow review":"预约免费流程评估",
+      "Read the case study":"阅读案例模型",
+      "// free · ~45 min · written opportunity map":"// 免费 · 约 45 分钟 · 书面机会图谱",
+      "Monthly close — hours ledger":"月结工时台账",
+      "illustrative":"示例",
+      "Bank reconciliation":"银行对账",
+      "12.0 h":"12.0 小时",
+      "→ 1.5 h":"→ 1.5 小时",
+      "Vouching & doc matching":"凭证核验与文件匹配",
+      "18.0 h":"18.0 小时",
+      "→ 3.0 h":"→ 3.0 小时",
+      "Draft FS from trial balance":"根据试算表起草财务报表",
+      "9.0 h":"9.0 小时",
+      "→ 1.0 h":"→ 1.0 小时",
+      "Secretarial resolutions":"公司秘书决议文件",
+      "6.0 h":"6.0 小时",
+      "→ 0.5 h":"→ 0.5 小时",
+      "Estimated hours returned":"预计释放工时",
+      "39.0 h":"39.0 小时",
+      "sample client file · partner reviews, agent drafts":"样例客户文件 · 合伙人复核，Agent 起草",
+      "Built around the filings, standards, and review discipline you already use":"围绕你已在使用的申报、准则和复核纪律构建",
+      "IRAS Form C-S":"IRAS Form C-S",
+      "GST F5":"GST F5",
+      "ACRA XBRL":"ACRA XBRL",
+      "SSA audit":"SSA 审计",
+      "Why now":"为什么现在",
+      "Your bottleneck is not expertise. It is repetitive file handling.":"瓶颈不是专业能力，而是重复性文件处理。",
+      "A practice's economics run on time. Too much of that time goes to":"事务所的经营效率取决于时间。过多时间被用于",
+      "re-keying bank statements, chasing reconciliations, matching invoices to entries, and assembling working papers":"重复录入银行流水、追踪调节差异、匹配发票与分录、整理工作底稿",
+      "— necessary work that does not need a senior to start from a blank file.":"这些工作必要，但不应再由资深人员从空白文件开始。",
+      "These tasks are structured, repetitive, and rule-bound, which makes them the":"这些任务结构化、重复且受规则约束，因此是",
+      "clearest fit for AI agents":"AI Agent 最明确的适用场景",
+      ": software that reads the source documents, drafts the output, records the source trail, and routes exceptions to a reviewer.":"：软件读取源文件、起草输出、记录来源轨迹，并把异常交给复核人员。",
+      "The commercial goal is practical:":"商业目标很实际：",
+      "more capacity per accountant":"提升每位会计人员的交付能力",
+      ", with people spending their hours on review, advisory, and client relationships.":"，让人员把时间投入复核、咨询和客户关系。",
+      "High":"高",
+      "volume of professional-services time sits in data gathering, formatting, matching, and processing.":"比例的专业服务时间耗费在数据收集、格式整理、匹配和处理上。",
+      "// strongest automation fit":"// 最适合自动化的环节",
+      "3–8×":"3–8 倍",
+      "faster turnaround is a realistic pilot target for document-heavy first-draft steps.":"对文件密集型初稿步骤而言，这是务实的试点提速目标。",
+      "// measured before scale-up":"// 扩大前先量化",
+      "100%":"100%",
+      "human-reviewed — every agent output is checked and signed off by your staff before it leaves the firm.":"人工复核：每份 Agent 输出在离开事务所前都由你的员工检查并签署。",
+      "// non-negotiable by design":"// 设计上不可妥协",
+      "Where agents fit your practice":"Agent 适用于哪些业务",
+      "Five ways to move routine compliance work into reviewed agent drafts.":"五类常规合规工作，可以转为经复核的 Agent 初稿。",
+      "We map agents to the work you already deliver under Singapore standards. Each workflow has defined inputs, rules, exceptions, source traceability, and a human review point before the output leaves your firm.":"我们把 Agent 映射到你已按新加坡标准交付的工作中。每个工作流都定义输入、规则、异常、来源追踪和人工复核节点，输出离开事务所前必须经过复核。",
+      "Accounting Services":"会计服务",
+      "bookkeeping & ledgers":"记账与总账",
+      "Agents read bank statements, sales and purchase invoices, propose coding to your chart of accounts, and run reconciliations, so your team starts from matched entries and a clear exception list.":"Agent 读取银行流水、销售和采购发票，根据你的会计科目表提出入账编码，并执行对账，让团队从已匹配分录和清晰异常清单开始工作。",
+      "bank reconciliation":"银行对账",
+      "invoice → journal entry":"发票 → 会计分录",
+      "GL coding":"总账编码",
+      "AR / AP matching":"应收 / 应付匹配",
+      "Compilation of Financial Statements":"财务报表编制",
+      "trial balance → SFRS FS":"试算表 → SFRS 财报",
+      "From a trial balance, an agent drafts a statement set with notes under SFRS or SFRS for Small Entities, follows your house template, and prepares XBRL tagging for BizFinx review.":"Agent 从试算表起草符合 SFRS 或 SFRS for Small Entities 的报表及附注，沿用你的内部模板，并准备供 BizFinx 复核的 XBRL 标记。",
+      "FS draft from TB":"由试算表生成财报初稿",
+      "notes & disclosures":"附注与披露",
+      "XBRL / BizFinx tagging":"XBRL / BizFinx 标记",
+      "prior-year tie-out":"上年数据勾稽",
+      "Taxation Services":"税务服务",
+      "IRAS computation & filing":"IRAS 税务计算与申报",
+      "Agents prepare tax computations, draft Form C-S / C and ECI, compile GST F5 returns, and surface deductions or capital allowances from source records with traceable workings.":"Agent 准备税务计算，起草 Form C-S / C 和 ECI，汇总 GST F5 申报，并从源记录中识别可追踪的扣除项或资本津贴。",
+      "tax computation":"税务计算",
+      "Form C-S / ECI draft":"Form C-S / ECI 初稿",
+      "deadline tracking":"截止日期跟踪",
+      "External & Special Audit":"外部与专项审计",
+      "SSA evidence & working papers":"SSA 证据与工作底稿",
+      "Agents support sample selection, anomaly checks, working-paper drafts aligned to your SSA programme, and confirmation preparation, leaving auditors to test, judge, and conclude.":"Agent 支持抽样选择、异常检查、符合你 SSA 审计程序的工作底稿初稿以及询证准备；审计人员保留测试、判断和结论职责。",
+      "risk-based sampling":"基于风险的抽样",
+      "anomaly detection":"异常识别",
+      "working-paper drafts":"工作底稿初稿",
+      "confirmations":"询证函",
+      "Corporate Secretarial Services":"公司秘书服务",
+      "ACRA compliance & filings":"ACRA 合规与申报",
+      "Agents draft directors' resolutions and minutes, maintain ACRA compliance calendars for Annual Returns and AGMs, prepare BizFile+ filing packs, and run KYC intake against your checklists.":"Agent 起草董事决议和会议记录，维护年度申报和 AGM 的 ACRA 合规日历，准备 BizFile+ 申报包，并按照你的清单完成 KYC 资料收集。",
+      "resolutions & minutes":"决议与会议记录",
+      "Annual Return calendar":"年度申报日历",
+      "BizFile+ prep":"BizFile+ 准备",
+      "KYC intake":"KYC 资料收集",
+      "Controlled GenAI delivery":"受控的生成式 AI 交付",
+      "Not a chatbot. A reviewed workflow your team can operate.":"不是聊天机器人，而是团队可操作、可复核的工作流。",
+      "YiWork applies GenAI and agent technology as a controlled delivery method: map the workflow, connect source files, build agents around defined tasks, test outputs, and keep professional judgement with the reviewer.":"YiWork 将生成式 AI 和 Agent 技术作为受控交付方法：梳理工作流、连接源文件、围绕明确任务构建 Agent、测试输出，并把专业判断保留给复核人员。",
+      "01 / MAP":"01 / 梳理",
+      "Workflow decomposition":"工作流拆解",
+      "Each service is broken into inputs, rules, exception paths, review checkpoints, and final deliverables before any prompt or agent is designed.":"在设计任何提示词或 Agent 之前，每项服务都会被拆解为输入、规则、异常路径、复核节点和最终交付物。",
+      "02 / BUILD":"02 / 构建",
+      "Document-aware agents":"理解文件的 Agent",
+      "Agents are configured to read bank statements, invoices, ledgers, tax schedules, minutes, and working papers, then convert them into structured workpapers.":"Agent 被配置为读取银行流水、发票、总账、税表、会议记录和工作底稿，并将其转换为结构化底稿。",
+      "03 / TEST":"03 / 测试",
+      "Checks before rollout":"上线前检查",
+      "Outputs are tested against sample files, prior-year packs, tie-outs, exception cases, and reviewer comments before the workflow is used in live delivery.":"工作流投入正式交付前，会用样例文件、上年度文件包、勾稽关系、异常案例和复核意见测试输出。",
+      "04 / CONTROL":"04 / 控制",
+      "Human review by design":"内置人工复核",
+      "The agent drafts; the professional reviews. Every material output remains subject to human approval, source traceability, and documented sign-off.":"Agent 起草，专业人员复核。每项重要输出都必须经过人工批准、来源追踪和书面签署。",
+      "How the agent delivery stack works":"Agent 交付栈如何运作",
+      "source files to reviewed output":"从源文件到经复核输出",
+      "STEP 01":"步骤 01",
+      "Client files":"客户文件",
+      "PDFs, CSVs, ledgers, trial balances, tax schedules, minutes, and filing records.":"PDF、CSV、总账、试算表、税务明细、会议记录和申报记录。",
+      "STEP 02":"步骤 02",
+      "Extraction":"提取",
+      "GenAI reads unstructured documents and converts them into reviewable tables and fields.":"生成式 AI 读取非结构化文件，并转换为可复核的表格和字段。",
+      "STEP 03":"步骤 03",
+      "Accounting logic":"会计逻辑",
+      "Rules, reconciliations, tie-outs, and exception checks are applied to the structured data.":"对结构化数据应用规则、对账、勾稽和异常检查。",
+      "STEP 04":"步骤 04",
+      "Agent draft":"Agent 初稿",
+      "The workflow produces journal suggestions, workpapers, filings, statements, or resolutions.":"工作流生成分录建议、工作底稿、申报文件、财务报表或决议文件。",
+      "STEP 05":"步骤 05",
+      "Review pack":"复核包",
+      "The reviewer receives the draft, source links, exceptions, and the trail needed for sign-off.":"复核人员收到初稿、来源链接、异常清单和签署所需的处理轨迹。",
+      "ISCA signal":"ISCA 信号",
+      "AI adoption in accounting should focus on real workflows, limitations, and responsible use in audit, reporting, and core finance.":"会计行业采用 AI 应聚焦真实工作流、技术限制，以及其在审计、报告和核心财务中的负责任使用。",
+      "ACCA 2026":"ACCA 2026",
+      "AI use is established in finance and accounting, while agent deployment is emerging and still requires governance and testing.":"AI 已在财务和会计中落地使用；Agent 部署仍处早期阶段，需要治理和测试。",
+      "Singapore AI governance":"新加坡 AI 治理",
+      "Responsible AI requires governance structures, human involvement, operations management, and stakeholder communication.":"负责任 AI 需要治理结构、人工参与、运营管理和利益相关方沟通。",
+      "Agent engineering":"Agent 工程",
+      "Reliable agents need clear tools, instructions, orchestration, evaluations, guardrails, and human intervention points.":"可靠 Agent 需要清晰工具、指令、编排、评估、护栏和人工介入节点。",
+      "Representative case study":"代表性案例模型",
+      "What the capacity model can look like for a 25-person practice.":"一家 25 人事务所的产能模型可能是什么样。",
+      "Mid-sized SG accounting firm":"新加坡中型会计事务所",
+      "~25 staff":"约 25 名员工",
+      "~180 SME clients":"约 180 家 SME 客户",
+      "Dec financial year-ends":"12 月财政年结",
+      "A representative model built from common patterns across SME practices. Figures are illustrative, not a specific client's audited results, and are validated during a pilot before scale-up.":"这是基于 SME 事务所常见模式建立的代表性模型。数字为示例，不代表某一特定客户的经审计结果，并会在扩大前通过试点验证。",
+      "A.":"A.",
+      "The challenge":"挑战",
+      "With many clients on December year-ends, a typical firm faces a hard annual crunch. Seniors can spend roughly":"许多客户在 12 月年结，典型事务所会面临明显的年度高峰压力。资深人员可能在每个客户上花费约",
+      "12 hours per client":"每客户 12 小时",
+      "on bank reconciliation and trial-balance clean-up, then another":"用于银行对账和试算表清理，之后再花约",
+      "~9 hours":"9 小时",
+      "drafting the SFRS statement set. Peak season means overtime, slipping turnaround, and attrition risk among trained staff.":"起草 SFRS 报表。旺季意味着加班、交付周期延长，以及受训员工流失风险上升。",
+      "B.":"B.",
+      "What we built":"构建内容",
+      "A four-agent pipeline running on the firm's own files, with a mandatory human checkpoint before any output is released:":"一条运行在事务所自有文件上的四 Agent 流水线，任何输出发布前都必须经过人工检查点：",
+      "Ingestion":"摄取",
+      "agent":"Agent",
+      "— parses bank statements (PDF / CSV) and invoices into structured records.":"：将银行流水（PDF / CSV）和发票解析为结构化记录。",
+      "Reconciliation":"对账",
+      "— matches transactions and flags only unmatched items for a person to clear.":"：匹配交易，只把未匹配项目标记给人员处理。",
+      "Coding":"编码",
+      "— proposes GL codes against the firm's chart of accounts, learning its conventions.":"：根据事务所会计科目表建议总账编码，并学习其内部规则。",
+      "FS drafting":"财报起草",
+      "— produces an SFRS for Small Entities statement set with notes and draft XBRL tags.":"：生成含附注和 XBRL 标记初稿的 SFRS for Small Entities 报表包。",
+      "C.":"C.",
+      "Controls":"控制",
+      "Client records were processed in an isolated environment with no model training on their data. Every figure traces back to its source document through a full audit log, and a senior signs off before anything reaches a client or ACRA.":"客户记录在隔离环境中处理，不用于模型训练。每个数字都可通过完整审计日志追溯至源文件，任何内容发送给客户或 ACRA 前都由资深人员签署。",
+      "Per-client close — before / after":"单客户月结 — 前 / 后",
+      "// hours, one monthly close, one client":"// 工时，单次月结，单个客户",
+      "1.5 h":"1.5 小时",
+      "3.0 h":"3.0 小时",
+      "1.0 h":"1.0 小时",
+      "0.5 h":"0.5 小时",
+      "Hours returned / close":"每次月结释放工时",
+      "≈ 39 h":"约 39 小时",
+      "Operational shift":"运营方式转变",
+      "The intended change is simple: seniors stop building every schedule from a blank file and start reviewing structured drafts, source links, and exceptions. Capacity improves only when the pilot shows measurable time saved without weakening review quality.":"目标转变很明确：资深人员不再从空白文件建立每一张明细表，而是复核结构化初稿、来源链接和异常项。只有在试点证明节省时间且不削弱复核质量时，产能提升才成立。",
+      "Representative operating outcome":"代表性运营结果",
+      "validated during pilot":"试点中验证",
+      "How we engage":"合作方式",
+      "A measured rollout, not a leap of faith.":"渐进式落地，而不是盲目押注。",
+      "We start with one workflow, prove the time saved in writing, then expand. You see the numbers before you commit further.":"我们从一个工作流开始，用书面结果证明节省的时间，再逐步扩展。进一步投入前，你会先看到量化数字。",
+      "Workflow review":"流程评估",
+      "We sit with your team, map one document-heavy workflow, and baseline the hours it takes today.":"我们与你的团队一起梳理一个文件密集型工作流，并建立当前耗时基线。",
+      "// output: scoped workflow + hour baseline":"// 输出：工作流范围 + 工时基线",
+      "Pilot agent":"试点 Agent",
+      "We build the agent on your real files in a secure environment, with a human-review checkpoint built in.":"我们在安全环境中基于真实文件构建 Agent，并内置人工复核检查点。",
+      "// output: working pilot · 2–4 weeks":"// 输出：可运行试点 · 2–4 周",
+      "Measure":"测量",
+      "We run the pilot alongside your current process and report hours saved, accuracy, and exceptions.":"我们让试点与现有流程并行运行，并报告节省工时、准确率和异常项。",
+      "// output: written results report":"// 输出：书面结果报告",
+      "Scale":"扩展",
+      "Once the numbers hold, we extend to adjacent workflows and hand your team the controls.":"当数据成立后，我们扩展到相邻工作流，并把控制权交给你的团队。",
+      "// output: rollout plan + handover":"// 输出：推广计划 + 交接",
+      "Led by accountancy-qualified delivery leadership.":"由具备会计专业资格的交付负责人主导。",
+      "YiWork keeps AI delivery close to professional accountancy judgement: agents draft, systems structure the work, and qualified leadership owns the review discipline from workflow design through rollout.":"YiWork 让 AI 交付贴近专业会计判断：Agent 负责起草，系统负责结构化工作，具备资质的负责人从工作流设计到落地全程负责复核纪律。",
+      "CEO":"首席执行官",
+      "// accountancy background · AI-enabled workflow delivery":"// 会计背景 · AI 赋能工作流交付",
+      "Professional accountancy credentials":"专业会计资质",
+      "Jennie leads YiWork's service delivery model, combining professional accountancy judgement with GenAI and agent-based workflows for accounting, tax, audit support, and corporate secretarial work in Singapore.":"Jennie 负责 YiWork 的服务交付模式，将专业会计判断与生成式 AI、Agent 工作流结合，服务新加坡会计、税务、审计支持和公司秘书业务。",
+      "Institute of Singapore Chartered Accountants":"新加坡特许会计师协会",
+      "Chartered Accountant":"特许会计师",
+      "Association of Chartered Certified Accountants":"特许公认会计师公会",
+      "ACCA Member":"ACCA 会员",
+      "Built for a regulated profession":"为受监管专业构建",
+      "Designed around the controls your work demands.":"围绕你的工作所要求的控制而设计。",
+      "Accounting and audit carry obligations on confidentiality, accuracy, and accountability. Those constraints shaped how we build — they are not an afterthought.":"会计和审计对保密性、准确性和问责性有明确义务。这些约束直接决定了我们的构建方式，而不是事后补充。",
+      "Human in the loop":"人工在环",
+      "Agents draft; people decide. Every output passes a review checkpoint before it reaches a client, IRAS, or ACRA.":"Agent 起草，人员决策。每项输出到达客户、IRAS 或 ACRA 前都经过复核检查点。",
+      "Your data stays yours":"你的数据仍归你所有",
+      "Client records are processed in isolated environments. No training on your data, defined retention rules, access you control.":"客户记录在隔离环境中处理。不使用你的数据训练模型，保留规则明确，访问权限由你控制。",
+      "Full audit trail":"完整审计轨迹",
+      "Every agent action is logged with its source documents, so you can show exactly how a number or draft was produced.":"每个 Agent 动作都会连同其源文件记录，使你能够说明每个数字或初稿如何生成。",
+      "Professional oversight":"专业监督",
+      "Delivery is led by accountancy-qualified leadership, with credentials shown in the team section and review checkpoints built into each workflow.":"交付由具备会计资格的负责人主导，资质列于团队部分，每个工作流均内置复核检查点。",
+      "Start with one workflow":"从一个工作流开始",
+      "Leave with a clear automation opportunity map.":"得到一份清晰的自动化机会图谱。",
+      "Book a free workflow review. We will map one process in your practice, estimate the hours at stake, identify the first safe pilot, and outline the controls required before rollout. No obligation to proceed.":"预约免费流程评估。我们会梳理你事务所的一个流程，估算相关工时，识别第一个可安全试点的场景，并列出推广前所需控制。无后续合作义务。",
+      "// workflow map · pilot scope · control checklist":"// 工作流图谱 · 试点范围 · 控制清单",
+      "Reviewed AI-agent workflows for Singapore accounting, tax, audit, and corporate secretarial practices. Less re-keying, more judgement.":"面向新加坡会计、税务、审计和公司秘书事务所的经复核 AI Agent 工作流。减少重复录入，增加专业判断。",
+      "Accounting":"会计",
+      "Financial statements":"财务报表",
+      "Taxation":"税务",
+      "Audit":"审计",
+      "Corporate secretarial":"公司秘书",
+      "Company":"公司",
+      "Case study":"案例模型",
+      "How it works":"实施方式",
+      "Contact":"联系",
+      "© 2026 YiWork":"© 2026 YiWork",
+      "// capacity figures are illustrative and validated during pilot":"// 产能数字为示例，并在试点中验证"
+    }
+  };
+
+  var i18nMeta={
+    en:{
+      title:"YiWork — AI workflow automation for Singapore accounting firms",
+      description:"YiWork turns repetitive Singapore accounting, tax, audit, and corporate secretarial work into reviewed AI-agent drafts, with source traceability and human sign-off built in.",
+      ogTitle:"YiWork — AI workflow automation for Singapore accounting firms",
+      ogDescription:"Turn bank recs, FS drafts, tax computations, GST, ACRA packs, and working papers into traceable AI-agent drafts reviewed by your team.",
+      twitterDescription:"AI-agent workflows for Singapore accounting firms: reviewed drafts, source traceability, and human sign-off for compliance-heavy work.",
+      locale:"en_SG"
+    },
+    zh:{
+      title:"YiWork — 面向新加坡会计事务所的 AI 工作流自动化",
+      description:"YiWork 将新加坡会计、税务、审计和公司秘书业务中的重复性工作转化为可复核的 AI Agent 初稿，并内置来源追踪和人工签署。",
+      ogTitle:"YiWork — 面向新加坡会计事务所的 AI 工作流自动化",
+      ogDescription:"将银行对账、财务报表初稿、税务计算、GST、ACRA 文件包和工作底稿转化为可追踪、经团队复核的 AI Agent 初稿。",
+      twitterDescription:"面向新加坡会计事务所的 AI Agent 工作流：经复核初稿、来源追踪，以及合规密集型工作的人工签署。",
+      locale:"zh_CN"
+    }
+  };
+
+  var i18nAttrs={
+    en:{
+      brand:"YiWork — home",
+      nav:"Primary",
+      language:"Select language",
+      menuOpen:"Open menu",
+      menuClose:"Close menu",
+      ledger:"Illustrative time savings per monthly close",
+      research:"Research sources informing the AI delivery structure",
+      mailSubject:"Free%20workflow%20review%20request"
+    },
+    zh:{
+      brand:"YiWork — 首页",
+      nav:"主导航",
+      language:"选择语言",
+      menuOpen:"打开菜单",
+      menuClose:"关闭菜单",
+      ledger:"每月结账节省工时示例",
+      research:"支持 AI 交付结构的研究来源",
+      mailSubject:"%E5%85%8D%E8%B4%B9%E6%B5%81%E7%A8%8B%E8%AF%84%E4%BC%B0%E5%92%A8%E8%AF%A2"
+    }
+  };
+
+  function translateTextNodes(lang){
+    var zh=i18nText.zh;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(node){
+        if(!node.nodeValue.trim())return NodeFilter.FILTER_REJECT;
+        var parent=node.parentElement;
+        if(!parent||parent.closest('script,style'))return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes=[];
+    while(walker.nextNode())nodes.push(walker.currentNode);
+    nodes.forEach(function(node){
+      if(node._yiworkSourceText===undefined)node._yiworkSourceText=node.nodeValue;
+      var source=node._yiworkSourceText;
+      var key=source.trim();
+      var replacement=lang==='zh'&&zh[key]?zh[key]:key;
+      var lead=source.match(/^\s*/)[0];
+      var trail=source.match(/\s*$/)[0];
+      node.nodeValue=lead+replacement+trail;
+    });
+  }
+
+  function setMetaContent(selector,value){
+    var el=document.querySelector(selector);
+    if(el)el.setAttribute('content',value);
+  }
+
+  function applyMeta(lang){
+    var meta=i18nMeta[lang];
+    document.title=meta.title;
+    setMetaContent('meta[name="description"]',meta.description);
+    setMetaContent('meta[property="og:title"]',meta.ogTitle);
+    setMetaContent('meta[property="og:description"]',meta.ogDescription);
+    setMetaContent('meta[property="og:locale"]',meta.locale);
+    setMetaContent('meta[name="twitter:title"]',meta.ogTitle);
+    setMetaContent('meta[name="twitter:description"]',meta.twitterDescription);
+  }
+
+  function applyAttrs(lang){
+    var attrs=i18nAttrs[lang];
+    document.documentElement.lang=lang==='zh'?'zh-CN':'en';
+    document.querySelectorAll('.brand').forEach(function(el){el.setAttribute('aria-label',attrs.brand);});
+    var nav=document.getElementById('nav-links');
+    if(nav)nav.setAttribute('aria-label',attrs.nav);
+    var languageSelect=document.getElementById('languageSelect');
+    if(languageSelect)languageSelect.setAttribute('aria-label',attrs.language);
+    var ledger=document.querySelector('.ledger');
+    if(ledger)ledger.setAttribute('aria-label',attrs.ledger);
+    var research=document.querySelector('.research-grid');
+    if(research)research.setAttribute('aria-label',attrs.research);
+    var mail=document.querySelector('.btn-light[href^="mailto:"]');
+    if(mail)mail.setAttribute('href','mailto:hello@yiwork.ai?subject='+attrs.mailSubject);
+    updateMenuLabel();
+  }
+
+  function updateMenuLabel(){
+    var menuBtn=document.getElementById('menuBtn');
+    if(!menuBtn)return;
+    var open=document.body.classList.contains('mobile-open');
+    var attrs=i18nAttrs[currentLang]||i18nAttrs.en;
+    menuBtn.setAttribute('aria-label',open?attrs.menuClose:attrs.menuOpen);
+  }
+
+  function hourSuffix(){
+    return currentLang==='zh'?' 小时':' h';
+  }
+
+  function getInitialLanguage(){
+    var params=new URLSearchParams(window.location.search);
+    var fromUrl=params.get('lang');
+    if(fromUrl==='zh'||fromUrl==='en')return fromUrl;
+    try{
+      var saved=localStorage.getItem('yiwork-language');
+      if(saved==='zh'||saved==='en')return saved;
+    }catch(e){}
+    return (navigator.language||'').toLowerCase().indexOf('zh')===0?'zh':'en';
+  }
+
+  function setLanguage(lang,updateUrl){
+    currentLang=lang==='zh'?'zh':'en';
+    translateTextNodes(currentLang);
+    applyMeta(currentLang);
+    applyAttrs(currentLang);
+    updateDynamicCopy();
+    var select=document.getElementById('languageSelect');
+    if(select)select.value=currentLang;
+    try{localStorage.setItem('yiwork-language',currentLang);}catch(e){}
+    if(updateUrl&&window.history&&window.URL){
+      var url=new URL(window.location.href);
+      if(currentLang==='zh')url.searchParams.set('lang','zh');
+      else url.searchParams.delete('lang');
+      window.history.replaceState({},'',url.toString());
+    }
+  }
+
+  function updateDynamicCopy(){
+    var saved=document.getElementById('savedNum');
+    if(saved&&saved.dataset.animating!=='true')saved.textContent='39.0'+hourSuffix();
+  }
+
+  var languageSelect=document.getElementById('languageSelect');
+  if(languageSelect){
+    languageSelect.addEventListener('change',function(){setLanguage(languageSelect.value,true);});
+  }
+  setLanguage(getInitialLanguage(),false);
+
   var menuBtn=document.getElementById('menuBtn');
   function setMenu(open){
     document.body.classList.toggle('mobile-open',open);
     menuBtn.setAttribute('aria-expanded',open?'true':'false');
-    menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
+    updateMenuLabel();
   }
   menuBtn.addEventListener('click',function(){setMenu(!document.body.classList.contains('mobile-open'));});
   document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
@@ -821,8 +1236,16 @@
   var el=document.getElementById('savedNum');
   if(el && !reduce){
     var target=39.0,start=null,dur=1100;
-    el.textContent='0.0 h';
-    function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var eased=1-Math.pow(1-p,3);el.textContent=(target*eased).toFixed(1)+' h';if(p<1)requestAnimationFrame(step);}
+    el.dataset.animating='true';
+    el.textContent='0.0'+hourSuffix();
+    function step(ts){
+      if(!start)start=ts;
+      var p=Math.min((ts-start)/dur,1);
+      var eased=1-Math.pow(1-p,3);
+      el.textContent=(target*eased).toFixed(1)+hourSuffix();
+      if(p<1)requestAnimationFrame(step);
+      else el.dataset.animating='false';
+    }
     setTimeout(function(){requestAnimationFrame(step);},350);
   }
 
